@@ -1,9 +1,7 @@
-export interface IEmployer {
-    id: number;
+export class CreateEmployerDto {
     firstName: string;
     middleName?: string;
     lastName: string;
     username: string;
-    password?: string;
-    }
-    
+    password: string;
+  }

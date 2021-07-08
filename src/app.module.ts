@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserController } from './user/user.controller';
 import { User } from './user/user.entity';
+import { Employer } from './employer/employer.entity';
 import { UserService } from './user/user.service';
 import { JobController } from './job/job.controller';
 import { JobService } from './job/job.service';
@@ -14,7 +15,7 @@ import { EmployerService } from './employer/employer.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User, Employer]),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -22,7 +23,7 @@ import { EmployerService } from './employer/employer.service';
       username: 'root',
       password: 'root',
       database: 'esugodb',
-      entities: [User],
+      entities: [User, Employer],
       synchronize: true
     })
   ],

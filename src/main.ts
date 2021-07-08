@@ -12,7 +12,7 @@ async function bootstrap() {
     .addTag('job available')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('res-api', app, document);
+  SwaggerModule.setup('esugo-api', app, document);
 
   await app.listen(3000);
 }
