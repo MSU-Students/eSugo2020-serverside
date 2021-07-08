@@ -5,6 +5,12 @@ import { AppService } from './app.service';
 import { UserController } from './user/user.controller';
 import { User } from './user/user.entity';
 import { UserService } from './user/user.service';
+import { JobController } from './job/job.controller';
+import { JobService } from './job/job.service';
+import { WorkerController } from './worker/worker.controller';
+import { WorkerService } from './worker/worker.service';
+import { EmployerController } from './employer/employer.controller';
+import { EmployerService } from './employer/employer.service';
 
 @Module({
   imports: [
@@ -20,7 +26,7 @@ import { UserService } from './user/user.service';
       synchronize: true
     })
   ],
-  controllers: [AppController, UserController],
-  providers: [AppService, UserService],
+  controllers: [AppController, UserController, JobController, WorkerController, EmployerController],
+  providers: [AppService, UserService, JobService, WorkerService, EmployerService],
 })
 export class AppModule {}
