@@ -1,3 +1,4 @@
+
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateEmployerDto } from 'src/dto/create-employer.dto';
 import { EmployerDto } from 'src/dto/employer.dto';
@@ -12,9 +13,9 @@ export class EmployerController {
     }
     @Get(':id')
     async findOne(@Param('id') id: number) : Promise<EmployerDto> {
-        const user = await this.employerService.findOne(id);
+        const employer = await this.employerService.findOne(id);
         return {
-            ...user,
+            ...employer,
             password: undefined
         };
     }

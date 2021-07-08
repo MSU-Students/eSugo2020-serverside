@@ -1,4 +1,4 @@
-export interface IWorker {
+export class CreateWorkerDto {
     id: number;
     firstName: string;
     middleName?: string;
@@ -10,4 +10,3 @@ export interface IWorker {
     username: string;
     password?: string;
     }
-    

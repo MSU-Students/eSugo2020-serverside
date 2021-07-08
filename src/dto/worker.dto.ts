@@ -1,5 +1,5 @@
-import { IEmployer } from '../interface/employer.interface';
-export class EmployerDto implements IEmployer {
+import { IWorker } from '../interface/worker.interface';
+export class WorkerDto implements IWorker {
   id: number;
   firstName: string;
   middleName?: string;
