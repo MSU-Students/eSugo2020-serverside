@@ -1,4 +1,4 @@
-export interface IJob {
+export class CreateJobDto {
     jobID: number;
     employerID: number;
     jobtitle: string;
@@ -6,5 +6,4 @@ export interface IJob {
     salary: number; 
     dataposted: string;
     jobstatus: string;
-    }
-    
+  }

@@ -1,4 +1,5 @@
-export interface IJob {
+import { IJob } from '../interface/job.interface';
+export class JobDto implements IJob {
     jobID: number;
     employerID: number;
     jobtitle: string;
@@ -6,5 +7,4 @@ export interface IJob {
     salary: number; 
     dataposted: string;
     jobstatus: string;
-    }
-    
+}

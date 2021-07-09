@@ -1,20 +1,23 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { CreateJobreportDto } from "src/dto/create-jobreport.dto";
+import { CreateJobworkerDto } from "src/dto/create-jobworker.dto";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Jobreport implements CreateJobreportDto {
+export class Jobworker implements CreateJobworkerDto {
 
     @ApiProperty()
     @PrimaryGeneratedColumn() 
-    jobreportID: number;
+    jobworkerID: number;
         
     @ApiProperty()
     @Column({nullable: false})
-    userID: number;
+    jobID: number;
 
     @ApiProperty()
     @Column({nullable: false}) 
-    jobID: number;
+    workerID: number;
 
+    @ApiProperty()
+    @Column({nullable: false}) 
+    jobworkerstatus: string;
 }
