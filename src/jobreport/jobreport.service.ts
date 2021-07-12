@@ -13,10 +13,13 @@ export class JobreportService {
     findOne(id: number) {
         return this.jobreportRepository.findOne(id);
     }
-    async update(jobreport: JobreportDto): Promise<JobreportDto> {
-        return this.jobreportRepository.save(jobreport);
+    findAll(): Promise<JobreportDto[]> {
+        return this.jobreportRepository.find();
     }
-    deleteOne(id: number) {
-        return this.jobreportRepository.delete(id);
+    async update(id: number, jobreport: JobreportDto) {
+        await this.jobreportRepository.update(id, jobreport)
+    }
+   async delete(id: number) {
+       await this.jobreportRepository.delete(id);
     }
 }

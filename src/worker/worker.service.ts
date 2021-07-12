@@ -13,10 +13,13 @@ export class WorkerService {
     findOne(id: number) {
         return this.workerRepository.findOne(id);
     }
-    async update(user: WorkerDto): Promise<WorkerDto> {
-        return this.workerRepository.save(user);
+    findAll(): Promise<WorkerDto[]> {
+        return this.workerRepository.find();
     }
-    deleteOne(id: number) {
-        return this.workerRepository.delete(id);
+    async update(id: number, worker: WorkerDto) {
+        await this.workerRepository.update(id, worker)
+    }
+   async delete(id: number) {
+       await this.workerRepository.delete(id);
     }
 }

@@ -26,6 +26,13 @@ export class JobController {
         };
     }
 
+    @ApiOperation({ summary: 'Get all job', operationId: 'getJobs' })
+    @ApiResponse({ status: 200, type: JobDto })
+    @Get()
+    async findAll(): Promise<JobDto[]>  {
+        return await this.jobService.findAll();
+    }
+
     @ApiOperation({ summary: 'Update job by id', operationId: 'updateJob' })
     @ApiResponse({ status: 200, type: JobDto })
     @Put(':id')

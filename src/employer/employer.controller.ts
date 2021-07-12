@@ -27,6 +27,13 @@ export class EmployerController {
         };
     }
 
+    @ApiOperation({ summary: 'Get all Employer', operationId: 'getEmployers' })
+    @ApiResponse({ status: 200, type: EmployerDto })
+    @Get()
+    async findAll(): Promise<EmployerDto[]>  {
+        return await this.employerService.findAll();
+    }
+
     @ApiOperation({ summary: 'Update employer by id', operationId: 'updateEmployer' })
     @ApiResponse({ status: 200, type: EmployerDto })
     @Put(':id')

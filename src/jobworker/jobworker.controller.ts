@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CreateJobworkerDto } from 'src/dto/create-jobworker.dto';
 import { JobworkerDto } from 'src/dto/jobworker.dto';
@@ -24,5 +24,26 @@ export class JobworkerController {
         return {
             ...jobworker,
         };
+    }
+
+    @ApiOperation({ summary: 'Get all jobworker', operationId: 'getJobworker' })
+    @ApiResponse({ status: 200, type: JobworkerDto })
+    @Get()
+    async findAll(): Promise<JobworkerDto[]>  {
+        return await this.jobworkerService.findAll();
+    }
+    
+    @ApiOperation({ summary: 'Update jobworker by id', operationId: 'updateJobworker' })
+    @ApiResponse({ status: 200, type: JobworkerDto })
+    @Put(':id')
+    async update(@Param('id') id: number, @Body() jobworker: CreateJobworkerDto) {
+    this.jobworkerService.update(id, jobworker);
+  }
+  
+    @ApiOperation({ summary: 'Delete jobworker by id', operationId: 'deleteJobworker' })
+    @ApiResponse({ status: 200, type: JobworkerDto })
+    @Delete(':id')
+    async delete(@Param('id') id: number){
+        await this.jobworkerService.delete(id);
     }
 }

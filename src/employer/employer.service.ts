@@ -13,6 +13,9 @@ export class EmployerService {
     findOne(id: number) {
         return this.employerRepository.findOne(id);
     }
+    findAll(): Promise<EmployerDto[]> {
+        return this.employerRepository.find();
+    }
     async update(id: number, employer: EmployerDto) {
         await this.employerRepository.update(id, employer)
     }

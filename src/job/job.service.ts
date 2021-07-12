@@ -13,6 +13,9 @@ export class JobService {
     findOne(id: number) {
         return this.jobRepository.findOne(id);
     }
+    findAll(): Promise<JobDto[]> {
+        return this.jobRepository.find();
+    }
     async update(id: number, job: JobDto) {
         await this.jobRepository.update(id, job)
     }
