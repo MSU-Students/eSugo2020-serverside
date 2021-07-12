@@ -16,7 +16,7 @@ export class WorkerController {
         return this.workerService.create(worker);
     }
 
-    @ApiOperation({ summary: 'Get user by id', operationId: 'getUser' })
+    @ApiOperation({ summary: 'Get worker by id', operationId: 'getWorker' })
     @ApiResponse({ status: 200, type: WorkerDto })
     @Get(':id')
     async findOne(@Param('id') id: number) : Promise<WorkerDto> {
@@ -27,7 +27,7 @@ export class WorkerController {
         };
     }
 
-    @ApiOperation({ summary: 'Get all Worker', operationId: 'getWorkers' })
+    @ApiOperation({ summary: 'Get all worker', operationId: 'getWorkers' })
     @ApiResponse({ status: 200, type: WorkerDto })
     @Get()
     async findAll(): Promise<WorkerDto[]>  {
@@ -41,7 +41,7 @@ export class WorkerController {
     this.workerService.update(id, worker);
   }
   
-    @ApiOperation({ summary: 'Delete employer by id', operationId: 'deleteEmployer' })
+    @ApiOperation({ summary: 'Delete worker by id', operationId: 'deleteWorker' })
     @ApiResponse({ status: 200, type: WorkerDto })
     @Delete(':id')
     async delete(@Param('id') id: number){
