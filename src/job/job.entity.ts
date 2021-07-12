@@ -27,7 +27,7 @@ export class Job implements CreateJobDto {
     
     @ApiProperty()
     @Column({nullable: false}) 
-    dataposted: string;
+    dateposted: string;
 
     @ApiProperty()
     @Column({nullable: false}) 

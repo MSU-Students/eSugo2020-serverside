@@ -4,6 +4,6 @@ export class CreateJobDto {
     jobtitle: string;
     jobdesc: string;
     salary: number; 
-    dataposted: string;
+    dateposted: string;
     jobstatus: string;
   }

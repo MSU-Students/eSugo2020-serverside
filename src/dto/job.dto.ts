@@ -5,6 +5,6 @@ export class JobDto implements IJob {
     jobtitle: string;
     jobdesc: string;
     salary: number; 
-    dataposted: string;
+    dateposted: string;
     jobstatus: string;
 }

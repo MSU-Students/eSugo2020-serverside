@@ -13,10 +13,10 @@ export class JobService {
     findOne(id: number) {
         return this.jobRepository.findOne(id);
     }
-    async update(job: JobDto): Promise<JobDto> {
-        return this.jobRepository.save(job);
+    async update(id: number, job: JobDto) {
+        await this.jobRepository.update(id, job)
     }
-    deleteOne(id: number) {
-        return this.jobRepository.delete(id);
+   async delete(id: number) {
+       await this.jobRepository.delete(id);
     }
 }
