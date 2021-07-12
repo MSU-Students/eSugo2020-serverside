@@ -13,10 +13,10 @@ export class EmployerService {
     findOne(id: number) {
         return this.employerRepository.findOne(id);
     }
-    async update(user: EmployerDto): Promise<EmployerDto> {
-        return this.employerRepository.save(user);
+    async update(id: number, employer: EmployerDto) {
+        await this.employerRepository.update(id, employer)
     }
-    deleteOne(id: number) {
-        return this.employerRepository.delete(id);
+   async delete(id: number) {
+       await this.employerRepository.delete(id);
     }
 }
