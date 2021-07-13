@@ -26,7 +26,7 @@ export class JobworkerController {
         };
     }
 
-    @ApiOperation({ summary: 'Get all jobworker', operationId: 'getJobworker' })
+    @ApiOperation({ summary: 'Get all jobworker', operationId: 'getJobworkers' })
     @ApiResponse({ status: 200, type: JobworkerDto })
     @Get()
     async findAll(): Promise<JobworkerDto[]>  {

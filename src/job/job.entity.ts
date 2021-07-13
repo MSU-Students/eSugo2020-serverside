@@ -22,7 +22,11 @@ export class Job implements CreateJobDto {
     jobdesc: string;
     
     @ApiProperty()
-    @Column({nullable: false}) 
+    @Column({nullable: true}) 
+    location: string;
+
+    @ApiProperty()
+    @Column({nullable: true}) 
     salary: number;
     
     @ApiProperty()

@@ -15,6 +15,9 @@ export class JobDto implements IJob {
     jobdesc: string;
 
     @ApiProperty()
+    location: string;
+
+    @ApiProperty()
     salary: number;
     
     @ApiProperty()
