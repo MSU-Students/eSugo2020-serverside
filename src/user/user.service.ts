@@ -13,10 +13,13 @@ export class UserService {
     findOne(id: number) {
         return this.userRepository.findOne(id);
     }
-    async update(user: UserDto): Promise<UserDto> {
-        return this.userRepository.save(user);
+    findAll(): Promise<UserDto[]> {
+        return this.userRepository.find();
     }
-    deleteOne(id: number) {
-        return this.userRepository.delete(id);
+    async update(id: number, user: UserDto) {
+        await this.userRepository.update(id, user)
+    }
+   async delete(id: number) {
+       await this.userRepository.delete(id);
     }
 }

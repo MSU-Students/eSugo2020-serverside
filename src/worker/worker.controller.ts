@@ -23,7 +23,6 @@ export class WorkerController {
         const worker = await this.workerService.findOne(id);
         return {
             ...worker,
-            password: undefined
         };
     }
 

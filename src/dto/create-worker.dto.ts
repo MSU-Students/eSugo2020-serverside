@@ -6,29 +6,10 @@ export class CreateWorkerDto implements IWorker {
     id: number;
 
     @ApiProperty()
-    firstName: string;
+    workerID: number;
 
     @ApiProperty()
-    middleName?: string;
+    aboutme: string;
 
-    @ApiProperty()
-    lastName: string;
-
-    @ApiProperty()
-    dateofbirth: string;
-
-    @ApiProperty()
-    gender: string;
-
-    @ApiProperty()
-    email: string;
-
-    @ApiProperty()
-    acctStatus: string;
-
-    @ApiProperty()
-    username: string;
-
-    @ApiProperty()
-    password?: string;
+    
     }

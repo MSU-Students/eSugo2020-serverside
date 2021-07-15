@@ -15,6 +15,21 @@ export class UserDto implements IUser {
   lastName: string;
 
   @ApiProperty()
+  dateofbirth: string;
+
+  @ApiProperty()
+  gender: string;
+
+  @ApiProperty()
+  email: string;
+
+  @ApiProperty()
+  acctStatus: string;
+
+  @ApiProperty()
+  acctCategory: string;
+
+  @ApiProperty()
   username: string;
 
   @ApiProperty()

@@ -4,31 +4,11 @@ export class WorkerDto implements IWorker {
 
   @ApiProperty()
   id: number;
+
+  @ApiProperty()
+  workerID: number;
+
+  @ApiProperty()
+  aboutme: string;
   
-  @ApiProperty()
-  firstName: string;
-
-  @ApiProperty()
-  middleName?: string;
-
-  @ApiProperty()
-  lastName: string;
-
-  @ApiProperty()
-  dateofbirth: string;
-
-  @ApiProperty()
-  gender: string;
-
-  @ApiProperty()
-  email: string;
-
-  @ApiProperty()
-  acctStatus: string;
-
-  @ApiProperty()
-  username: string;
-
-  @ApiProperty()
-  password?: string;
 }

@@ -23,6 +23,27 @@ export class User implements CreateUserDto {
 
     @ApiProperty()
     @Column({length: 35, nullable: false})
+    dateofbirth: string;
+  
+    @ApiProperty()
+    @Column({length: 35, nullable: false})
+    gender: string;
+  
+    @ApiProperty()
+    @Column({length: 35, nullable: false})
+    email: string;
+  
+    @ApiProperty()
+    @Column({length: 35, nullable: false})
+    acctStatus: string;
+
+    @ApiProperty()
+    @Column({length: 35, nullable: false})
+    acctCategory: string;
+
+
+    @ApiProperty()
+    @Column({length: 35, nullable: false})
     username: string;
     
     @ApiProperty()

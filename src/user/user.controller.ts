@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { CreateUserDto } from 'src/dto/create-user.dto';
 import { UserDto } from 'src/dto/user.dto';
@@ -16,7 +16,7 @@ export class UserController {
         return this.userService.create(user);
     }
 
-    @ApiOperation({ summary: 'get use by id', operationId: 'getUser' })
+    @ApiOperation({ summary: 'get user by id', operationId: 'getUser' })
     @ApiResponse({ status: 200, type: UserDto })
     @Get(':id')
     async findOne(@Param('id') id: number) : Promise<UserDto> {
@@ -25,5 +25,26 @@ export class UserController {
             ...user,
             password: undefined
         };
+    }
+
+    @ApiOperation({ summary: 'Get all user', operationId: 'getUsers' })
+    @ApiResponse({ status: 200, type: UserDto })
+    @Get()
+    async findAll(): Promise<UserDto[]>  {
+        return await this.userService.findAll();
+    }
+
+    @ApiOperation({ summary: 'Update user by id', operationId: 'updateUser' })
+    @ApiResponse({ status: 200, type: UserDto })
+    @Put(':id')
+    async update(@Param('id') id: number, @Body() worker: CreateUserDto) {
+    this.userService.update(id, worker);
+  }
+  
+    @ApiOperation({ summary: 'Delete user by id', operationId: 'deleteUser' })
+    @ApiResponse({ status: 200, type: UserDto })
+    @Delete(':id')
+    async delete(@Param('id') id: number){
+        await this.userService.delete(id);
     }
 }
