@@ -1,11 +1,12 @@
+import { IUser } from './user.interface';
+
 export interface IJob {
-    jobID: number;
-    employerID: number;
-    jobtitle: string;
-    jobdesc: string;
-    location: string;
-    salary: number; 
-    dateposted: string;
-    jobstatus: string;
-    }
-    
+  id?: number;
+  jobtitle: string;
+  jobdesc: string;
+  location: string;
+  salary: number;
+  dateposted: Date;
+  jobstatus: string;
+  user: IUser;
+}

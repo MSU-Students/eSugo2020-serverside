@@ -1,9 +1,11 @@
+import { IJob } from './job.interface';
+
 export interface IUser {
-  id: number;
+  id?: number;
   firstName: string;
-  midlleName?: string;
+  middleName?: string;
   lastName: string;
   username: string;
-  password?: string;
-  }
-  
+  password: string;
+  jobs?: IJob[];
+}
