@@ -14,7 +14,7 @@ export class JobDto implements IJob {
 
   @ApiProperty({ example: 'Make a 5 feet tall cabinet with 2 doors' })
   @Column({ length: 100 })
-  description: string;
+  description?: string;
 
   @ApiProperty({ example: 'MSU Main, Marawi City' })
   @Column({ length: 100 })
@@ -28,9 +28,9 @@ export class JobDto implements IJob {
   @Column({ type: 'date' })
   datePosted: Date;
 
-  @ApiProperty({ example: 'example' })
+  @ApiProperty({ example: 'pending' })
   @Column({ length: 100 })
-  status: string;
+  status: 'pending' | 'approved' | 'disapproved' | 'taken' | 'done' | 'canceled';
 
   @ApiProperty({ example: 1 })
   @Column()

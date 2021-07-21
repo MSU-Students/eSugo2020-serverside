@@ -7,10 +7,13 @@ export interface IUser {
   lastName: string;
   birthdate: Date;
   gender: string;
-  type: string;
+  address?: string;
+  contact?: string;
   email?: string;
   company?: string;
   location?: string;
+  type: 'worker' | 'employer' | 'moderator' | 'admin';
+  status: 'available' | 'suspended' | 'banned';
   username: string;
   password: string;
   jobs: IJob[]

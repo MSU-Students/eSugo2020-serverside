@@ -33,21 +33,33 @@ export class UserDto implements IUser {
   @Column({ length: 100 })
   gender: string;
 
-  @ApiProperty({ example: 'worker' })
-  @Column({ length: 100 })
-  type: string;
+  @ApiProperty({ example: 'MSU Main, Marawi City' })
+  @Column({ length: 100, nullable: true })
+  address?: string;
 
+  @ApiProperty({ example: '+639990001111' })
+  @Column({ length: 100, nullable: true })
+  contact?: string;
+  
   @ApiProperty({ example: 'example@gmail.com' })
   @Column({ length: 100, nullable: true })
-  email: string;
-
+  email?: string;
+  
   @ApiProperty({ example: 'example co.' })
   @Column({ length: 100 })
-  company: string;
-
+  company?: string;
+  
   @ApiProperty({ example: 'Marawi City' })
   @Column({ length: 100 })
-  location: string;
+  location?: string;
+
+  @ApiProperty({ example: 'worker' })
+  @Column({ length: 100 })
+  type: 'worker' | 'employer' | 'moderator' | 'admin';
+  
+  @ApiProperty({ example: 'available' })
+  @Column({ length: 100 })
+  status: 'available' | 'suspended' | 'banned';
 
   @ApiProperty({ example: 'user' })
   @Column({ length: 100 })
