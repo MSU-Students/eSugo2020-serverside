@@ -1,23 +1,25 @@
-import { Job } from './job.entity';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { JobDto } from './job.entity';
 @Injectable()
 export class JobService {
-  constructor(@InjectRepository(Job) private jobRepository: Repository<Job>) {}
-  async create(job: Job): Promise<Job> {
+  constructor(
+    @InjectRepository(JobDto) private jobRepository: Repository<JobDto>,
+  ) {}
+  async create(job: JobDto): Promise<JobDto> {
     return this.jobRepository.save(job);
   }
-  findOne(id: number) {
-    return this.jobRepository.findOne(id);
-  }
-  findAll(): Promise<Job[]> {
+  async findAll(): Promise<JobDto[]> {
     return this.jobRepository.find();
   }
-  async update(id: number, job: Job) {
-    await this.jobRepository.update(id, job);
+  async findOne(id: number): Promise<JobDto> {
+    return this.jobRepository.findOne(id);
   }
-  async delete(id: number) {
-    await this.jobRepository.delete(id);
+  async update(id: number, job: JobDto) {
+    return this.jobRepository.update(id, job);
+  }
+  async deleteOne(id: number) {
+    return this.jobRepository.delete(id);
   }
 }

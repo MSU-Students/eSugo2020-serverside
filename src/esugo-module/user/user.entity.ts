@@ -1,33 +1,62 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IUser } from '../../interface/user.interface';
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Job } from '../job/job.entity';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { JobDto } from '../job';
 
 @Entity('User')
-export class User implements IUser {
+export class UserDto implements IUser {
   @PrimaryGeneratedColumn()
   id?: number;
 
   @ApiProperty({ example: 'Pandi' })
-  @Column({ length: 35, nullable: false })
+  @Column({ length: 100 })
   firstName: string;
 
   @ApiProperty({ example: 'Pogi' })
-  @Column({ length: 35, nullable: true })
+  @Column({ length: 100, nullable: true })
   middleName?: string;
 
   @ApiProperty({ example: 'Panontongan' })
-  @Column({ length: 35, nullable: false })
+  @Column({ length: 100 })
   lastName: string;
 
+  @ApiProperty()
+  @Column({ type: 'date' })
+  birthdate: Date;
+
+  @ApiProperty({ example: 'Male' })
+  @Column({ length: 100 })
+  gender: string;
+
+  @ApiProperty({ example: 'worker' })
+  @Column({ length: 100 })
+  type: string;
+
+  @ApiProperty({ example: 'example@gmail.com' })
+  @Column({ length: 100, nullable: true })
+  email: string;
+
+  @ApiProperty({ example: 'example co.' })
+  @Column({ length: 100 })
+  company: string;
+
+  @ApiProperty({ example: 'Marawi City' })
+  @Column({ length: 100 })
+  location: string;
+
   @ApiProperty({ example: 'user' })
-  @Column({ length: 35, nullable: false })
+  @Column({ length: 100 })
   username: string;
 
   @ApiProperty({ example: 'password' })
-  @Column({ length: 100, nullable: false })
+  @Column({ length: 100 })
   password: string;
-
-  @OneToMany(() => Job, (job) => job.user)
-  jobs?: Job[];
+  
+  @OneToMany(() => JobDto, (job) => job.user)
+  jobs: JobDto[];
 }

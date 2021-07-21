@@ -1,37 +1,47 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IJob } from '../../interface/job.interface';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { User } from '../user/user.entity';
+import { IJob } from 'src/interface/job.interface';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { UserDto } from '../user';
 
-@Entity()
-export class Job implements IJob {
+@Entity('Job')
+export class JobDto implements IJob {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @ApiProperty()
-  @Column({ nullable: false })
-  jobtitle: string;
+  @ApiProperty({ example: 'Carpentry' })
+  @Column({ length: 100 })
+  title: string;
 
-  @ApiProperty()
-  @Column({ nullable: false })
-  jobdesc: string;
+  @ApiProperty({ example: 'Make a 5 feet tall cabinet with 2 doors' })
+  @Column({ length: 100 })
+  description: string;
 
-  @ApiProperty()
-  @Column({ nullable: true })
+  @ApiProperty({ example: 'MSU Main, Marawi City' })
+  @Column({ length: 100 })
   location: string;
 
-  @ApiProperty()
-  @Column({ nullable: true })
+  @ApiProperty({ example: 5000 })
+  @Column()
   salary: number;
 
   @ApiProperty()
-  @Column({ type: 'date', nullable: true })
-  dateposted: Date;
+  @Column({ type: 'date' })
+  datePosted: Date;
 
-  @ApiProperty()
-  @Column({ nullable: false })
-  jobstatus: string;
+  @ApiProperty({ example: 'example' })
+  @Column({ length: 100 })
+  status: string;
 
-  @ManyToOne(() => User, (user) => user.jobs, { eager: true })
-  user: User;
+  @ApiProperty({ example: 1 })
+  @Column()
+  userId: number;
+
+  @ManyToOne(() => UserDto, (user) => user.jobs, {
+    eager: true,
+    cascade: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn({ name: "userId" })
+  user: UserDto;
 }
