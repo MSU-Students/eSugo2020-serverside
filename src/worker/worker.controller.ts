@@ -37,14 +37,14 @@ export class WorkerController {
     @ApiResponse({ status: 200, type: WorkerDto })
     @Put(':id')
     async update(@Param('id') id: number, @Body() worker: CreateWorkerDto) {
-    this.workerService.update(id, worker);
+    return await this.workerService.update(id, worker);
   }
   
     @ApiOperation({ summary: 'Delete worker by id', operationId: 'deleteWorker' })
     @ApiResponse({ status: 200, type: WorkerDto })
     @Delete(':id')
     async delete(@Param('id') id: number){
-        await this.workerService.delete(id);
+       return await this.workerService.delete(id);
     }
 }
 

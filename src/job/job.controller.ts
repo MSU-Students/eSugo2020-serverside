@@ -4,7 +4,7 @@ import { JobDto } from 'src/dto/job.dto';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { JobService } from './job.service';
 
-@Controller('Job')
+@Controller('job')
 export class JobController {
     constructor(private jobService:JobService) { }
     
@@ -37,7 +37,7 @@ export class JobController {
     @ApiResponse({ status: 200, type: JobDto })
     @Put(':id')
     async update(@Param('id') id: number, @Body() job: CreateJobDto) {
-    this.jobService.update(id, job);
+    return this.jobService.update(id, job);
   }
   
     @ApiOperation({ summary: 'Delete job by id', operationId: 'deleteJob' })

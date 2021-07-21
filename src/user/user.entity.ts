@@ -15,7 +15,7 @@ export class User implements CreateUserDto {
     
     @ApiProperty()
     @Column({length: 35, nullable: true})
-    midlleName?: string;
+    middleName?: string;
     
     @ApiProperty()
     @Column({length: 35, nullable: false})
@@ -34,7 +34,7 @@ export class User implements CreateUserDto {
     email: string;
   
     @ApiProperty()
-    @Column({length: 35, nullable: false})
+    @Column({length: 35, nullable: false, default: 'pending'})
     acctStatus: string;
 
     @ApiProperty()

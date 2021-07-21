@@ -36,13 +36,13 @@ export class JobreportController {
     @ApiResponse({ status: 200, type: JobreportDto })
     @Put(':id')
     async update(@Param('id') id: number, @Body() jobreport: CreateJobreportDto) {
-    this.jobreportService.update(id, jobreport);
+    return await this.jobreportService.update(id, jobreport);
   }
   
     @ApiOperation({ summary: 'Delete jobreport by id', operationId: 'deleteJobreport' })
     @ApiResponse({ status: 200, type: JobreportDto })
     @Delete(':id')
     async delete(@Param('id') id: number){
-        await this.jobreportService.delete(id);
+        return await this.jobreportService.delete(id);
     }
 }

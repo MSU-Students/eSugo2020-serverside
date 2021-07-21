@@ -17,9 +17,9 @@ export class WorkerService {
         return this.workerRepository.find();
     }
     async update(id: number, worker: WorkerDto) {
-        await this.workerRepository.update(id, worker)
+        return await this.workerRepository.update(id, worker)
     }
    async delete(id: number) {
-       await this.workerRepository.delete(id);
+       return await this.workerRepository.delete(id);
     }
 }

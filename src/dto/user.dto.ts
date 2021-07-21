@@ -9,7 +9,7 @@ export class UserDto implements IUser {
   firstName: string;
 
   @ApiProperty()
-  midlleName?: string;
+  middleName?: string;
 
   @ApiProperty()
   lastName: string;

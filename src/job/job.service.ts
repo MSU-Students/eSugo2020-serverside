@@ -17,7 +17,7 @@ export class JobService {
         return this.jobRepository.find();
     }
     async update(id: number, job: JobDto) {
-        await this.jobRepository.update(id, job)
+        return await this.jobRepository.update(id, job)
     }
    async delete(id: number) {
        await this.jobRepository.delete(id);

@@ -1,6 +1,8 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
+import { IUser } from 'src/interface/user.interface';
 
-export class CreateUserDto{
+export class CreateUserDto implements IUser {
+  
   @ApiProperty()
   id: number;
 
@@ -8,7 +10,7 @@ export class CreateUserDto{
   firstName: string;
 
   @ApiProperty()
-  midlleName?: string;
+  middleName?: string;
 
   @ApiProperty()
   lastName: string;

@@ -17,9 +17,9 @@ export class JobreportService {
         return this.jobreportRepository.find();
     }
     async update(id: number, jobreport: JobreportDto) {
-        await this.jobreportRepository.update(id, jobreport)
+       return await this.jobreportRepository.update(id, jobreport)
     }
    async delete(id: number) {
-       await this.jobreportRepository.delete(id);
+       return await this.jobreportRepository.delete(id);
     }
 }
