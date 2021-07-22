@@ -1,12 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IUser } from '../../interface/user.interface';
-import {
-  Column,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { JobDto } from '../job';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { JobDto } from 'src/esugo-module/job/job.entity';
 
 @Entity('User')
 export class UserDto implements IUser {
@@ -25,9 +20,9 @@ export class UserDto implements IUser {
   @Column({ length: 100 })
   lastName: string;
 
-  @ApiProperty()
-  @Column({ type: 'date' })
-  birthdate: Date;
+  @ApiProperty({ example: '2021-08-11' })
+  @Column({ length: 100, nullable: true })
+  birthdate: string;
 
   @ApiProperty({ example: 'Male' })
   @Column({ length: 100 })
@@ -40,23 +35,23 @@ export class UserDto implements IUser {
   @ApiProperty({ example: '+639990001111' })
   @Column({ length: 100, nullable: true })
   contact?: string;
-  
+
   @ApiProperty({ example: 'example@gmail.com' })
   @Column({ length: 100, nullable: true })
   email?: string;
-  
+
   @ApiProperty({ example: 'example co.' })
   @Column({ length: 100 })
   company?: string;
-  
+
   @ApiProperty({ example: 'Marawi City' })
   @Column({ length: 100 })
   location?: string;
 
-  @ApiProperty({ example: 'worker' })
+  @ApiProperty({ example: 'employer' })
   @Column({ length: 100 })
   type: 'worker' | 'employer' | 'moderator' | 'admin';
-  
+
   @ApiProperty({ example: 'available' })
   @Column({ length: 100 })
   status: 'available' | 'suspended' | 'banned';
@@ -68,7 +63,11 @@ export class UserDto implements IUser {
   @ApiProperty({ example: 'password' })
   @Column({ length: 100 })
   password: string;
-  
+
+  @ApiProperty({ required: false })
+  @Column({})
+  refreshToken?: string;
+
   @OneToMany(() => JobDto, (job) => job.user)
-  jobs: JobDto[];
+  jobs?: JobDto[];
 }

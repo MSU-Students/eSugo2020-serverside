@@ -4,6 +4,13 @@ import { Repository } from 'typeorm';
 import { UserDto } from './user.entity';
 @Injectable()
 export class UserService {
+  async setCurrentRefreshToken(refreshToken: string, id: number) {
+    const user = await this.findOne(id);
+    if (user) {
+      user.refreshToken = refreshToken;
+      await this.update(id, user);
+    }
+  }
   constructor(
     @InjectRepository(UserDto) private userRepository: Repository<UserDto>,
   ) {}
@@ -16,6 +23,10 @@ export class UserService {
   async findOne(id: number): Promise<UserDto> {
     return this.userRepository.findOne(id);
   }
+  async findByUsername(username: string): Promise<UserDto> {
+    return this.userRepository.findOne(username);  
+  }
+  
   async update(id: number, user: UserDto) {
     return this.userRepository.update(id, user);
   }

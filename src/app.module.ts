@@ -2,8 +2,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserDto, UserController, UserService } from './esugo-module/user';
+import { UserDto, UserController, UserService, } from './esugo-module/user';
 import { JobDto, JobController, JobService } from "./esugo-module/job"
+import { AuthModule } from 'src/esugo-module/user/auth.module';
 
 @Module({
   imports: [
@@ -16,8 +17,9 @@ import { JobDto, JobController, JobService } from "./esugo-module/job"
       password: 'root',
       database: 'esugodb',
       entities: [UserDto, JobDto],
-      synchronize: false,
+      synchronize: true,
     }),
+    AuthModule  
   ],
   controllers: [AppController, UserController, JobController],
   providers: [AppService, UserService, JobService],

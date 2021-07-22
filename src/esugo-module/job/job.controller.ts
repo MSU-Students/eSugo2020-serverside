@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { JobDto } from './job.entity';
 import { JobService } from './job.service';
@@ -12,7 +20,6 @@ export class JobController {
   @ApiResponse({ status: 200, type: JobDto })
   @Post()
   async create(@Body() job: JobDto): Promise<JobDto> {
-    console.log("controller: ", await this.jobService.create(job));
     return this.jobService.create(job);
   }
 
@@ -28,7 +35,6 @@ export class JobController {
   @Get(':id')
   async findOne(@Param('id') id: number): Promise<JobDto> {
     return this.jobService.findOne(id);
-    
   }
 
   @ApiOperation({ summary: 'Update job by id', operationId: 'UpdateJob' })
