@@ -2,7 +2,14 @@ import { UserService } from './user.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { LocalAuthGuard } from './local.auth.guard';
 import { AuthService } from './auth.service';
-import { Controller, Post, UseGuards, Request, Body , Get} from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  UseGuards,
+  Request,
+  Body,
+  Get,
+} from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiBody,
@@ -50,7 +57,7 @@ export class AuthController {
   async login(@Request() req) {
     const { refreshToken, accessToken, userId } = await this.authService.login(
       req.user,
-    );
+ );
     await this.userService.setCurrentRefreshToken(refreshToken, userId);
     return { refreshToken, accessToken };
   }
@@ -93,6 +100,12 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('profile')
   async getProfile(@Request() req) {
-    return req.user;
+    const user = await this.userService.findOne(req.user.userId);
+    return {
+      ...user,
+      id: undefined,
+      password: undefined,
+      refreshToken: undefined,
+    }
   }
 }

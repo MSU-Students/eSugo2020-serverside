@@ -1,4 +1,3 @@
-
 import { ConfigService } from '@nestjs/config';
 import { UserService } from './user.service';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
@@ -16,7 +15,6 @@ export class AuthService {
 
   async validateUser(username: string, pass: string): Promise<IUser> {
     const user = await this.userService.findByUsername(username);
-    console.log('validate:', user);
     const passwordMatched = user && (await bcrypt.compare(pass, user.password));
     if (passwordMatched) {
       return user;

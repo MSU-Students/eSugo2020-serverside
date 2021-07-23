@@ -19,8 +19,6 @@ import { JwtAuthGuard } from './jwt-auth.guard';
 import { UserDto } from './user.entity';
 import { UserService } from './user.service';
 
-@ApiBearerAuth()
-@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UserController {
   constructor(

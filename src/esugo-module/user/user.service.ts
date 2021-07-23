@@ -24,12 +24,10 @@ export class UserService {
     return this.userRepository.findOne(id);
   }
   async findByUsername(username: string): Promise<UserDto> {
-    console.log('service: ', await this.userRepository.findOne({username}));
-    return this.userRepository.findOne({username});
+    return this.userRepository.findOne({ username });
   }
 
   async update(id: number, user: UserDto) {
-    console.log('update: ', user);
     return this.userRepository.update(id, user);
   }
   async deleteOne(id: number) {

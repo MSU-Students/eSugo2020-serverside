@@ -12,7 +12,6 @@ export class ApplicationController {
   @ApiResponse({ status: 200, type: ApplicationDto })
   @Post()
   async create(@Body() job: ApplicationDto): Promise<ApplicationDto> {
-    console.log("controller: ", await this.applicationService.create(job));
     return this.applicationService.create(job);
   }
 
