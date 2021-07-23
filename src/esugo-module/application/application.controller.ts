@@ -8,7 +8,7 @@ export class ApplicationController {
   constructor(private applicationService: ApplicationService) {}
 
   @ApiBody({ type: ApplicationDto })
-  @ApiOperation({ summary: 'Add new job', operationId: 'AddJob' })
+  @ApiOperation({ summary: 'Add new application', operationId: 'AddApplication' })
   @ApiResponse({ status: 200, type: ApplicationDto })
   @Post()
   async create(@Body() job: ApplicationDto): Promise<ApplicationDto> {
