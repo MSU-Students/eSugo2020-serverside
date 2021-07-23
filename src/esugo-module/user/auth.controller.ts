@@ -2,7 +2,7 @@ import { UserService } from './user.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { LocalAuthGuard } from './local.auth.guard';
 import { AuthService } from './auth.service';
-import { Controller, Post, UseGuards, Request, Body } from '@nestjs/common';
+import { Controller, Post, UseGuards, Request, Body , Get} from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiBody,
@@ -83,5 +83,16 @@ export class AuthController {
   @Post('logout')
   async logOut(@Request() req) {
     await this.authService.removeRefreshToken(req.user.userId);
+  }
+
+  @ApiOperation({
+    summary: 'get profile info',
+    operationId: 'getProfile',
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  async getProfile(@Request() req) {
+    return req.user;
   }
 }

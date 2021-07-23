@@ -1,18 +1,39 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOperation,
+  ApiResponse,
+} from '@nestjs/swagger';
+import { AuthService } from './auth.service';
+import { JwtAuthGuard } from './jwt-auth.guard';
 import { UserDto } from './user.entity';
 import { UserService } from './user.service';
 
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UserController {
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private authService: AuthService,
+  ) {}
 
   @ApiBody({ type: UserDto })
   @ApiOperation({ summary: 'Add new user', operationId: 'AddUser' })
   @ApiResponse({ status: 200, type: UserDto })
-  @Post()
-  async create(@Body() user: UserDto): Promise<UserDto> {
-    return this.userService.create(user);
+  @Post('/create')
+  create(@Body() user: UserDto) {
+    return this.authService.register(user);
   }
 
   @ApiOperation({ summary: 'Get all users', operationId: 'GetUsers' })

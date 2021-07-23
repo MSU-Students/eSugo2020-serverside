@@ -21,8 +21,8 @@ export interface IUser {
   location?: string;
   type: 'worker' | 'employer' | 'moderator' | 'admin';
   status: 'available' | 'suspended' | 'banned';
-  username: string;
-  password: string;
+  username?: string;
+  password?: string;
   jobs?: IJob[]
 }
 
@@ -80,11 +80,11 @@ export class RegisterUserDto implements IUser {
   
     @ApiProperty({ example: 'user' })
     @Column({ length: 100 })
-    username: string;
+    username?: string;
   
     @ApiProperty({ example: 'password' })
     @Column({ length: 100 })
-    password: string;
+    password?: string;
     
     @OneToMany(() => JobDto, (job) => job.user)
     jobs?: JobDto[];
@@ -105,9 +105,9 @@ export class LoginUserDto implements IUser {
     type: 'worker' | 'employer' | 'moderator' | 'admin';
     status: 'available' | 'suspended' | 'banned';
     @ApiProperty()
-    username: string;
+    username?: string;
     @ApiProperty()
-    password: string;
+    password?: string;
     jobs?: IJob[]
   }
 
@@ -128,6 +128,6 @@ export class AccessTokenDto  {
     @ApiProperty({
         required: false,
         minLength: 5
-    })s
+    })
     refreshToken?: string;
 }

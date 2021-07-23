@@ -65,7 +65,7 @@ export class UserDto implements IUser {
   password: string;
 
   @ApiProperty({ required: false })
-  @Column({})
+  @Column({ length: 255, default: '' })
   refreshToken?: string;
 
   @OneToMany(() => JobDto, (job) => job.user)

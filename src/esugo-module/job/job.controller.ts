@@ -6,11 +6,19 @@ import {
   Param,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOperation,
+  ApiResponse,
+} from '@nestjs/swagger';
+import { JwtAuthGuard } from '../user/jwt-auth.guard';
 import { JobDto } from './job.entity';
 import { JobService } from './job.service';
-
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller('job')
 export class JobController {
   constructor(private jobService: JobService) {}
