@@ -1,3 +1,4 @@
+import { ApplicationDto } from './../application/application.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { IUser } from '../../interface/user.interface';
 import {
@@ -59,7 +60,7 @@ export class UserDto implements IUser {
   
   @ApiProperty({ example: 'available' })
   @Column({ length: 100 })
-  status: 'available' | 'suspended' | 'banned';
+  status: 'available' | 'suspended' | 'banned' | 'pending';
 
   @ApiProperty({ example: 'user' })
   @Column({ length: 100 })
@@ -71,4 +72,8 @@ export class UserDto implements IUser {
   
   @OneToMany(() => JobDto, (job) => job.user)
   jobs: JobDto[];
+
+  @OneToMany(() => ApplicationDto, (application) => application.user)
+  applications: ApplicationDto[];
 }
+
