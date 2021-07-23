@@ -2,13 +2,17 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserController } from './user/user.controller';
-import { User } from './user/user.entity';
-import { UserService } from './user/user.service';
+import { UserDto, UserController, UserService } from './esugo-module/user';
+import { JobDto, JobController, JobService } from './esugo-module/job';
+import {
+  ApplicationDto,
+  ApplicationController,
+  ApplicationService,
+} from './esugo-module/application';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([UserDto, JobDto, ApplicationDto]),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',
@@ -16,11 +20,11 @@ import { UserService } from './user/user.service';
       username: 'root',
       password: 'root',
       database: 'esugodb',
-      entities: [User],
-      synchronize: true
-    })
+      entities: [UserDto, JobDto, ApplicationDto],
+      synchronize: true,
+    }),
   ],
-  controllers: [AppController, UserController],
-  providers: [AppService, UserService],
+  controllers: [AppController, UserController, JobController, ApplicationController],
+  providers: [AppService, UserService, JobService, ApplicationService],
 })
 export class AppModule {}

@@ -7,12 +7,12 @@ async function bootstrap() {
   app.enableCors();
   const config = new DocumentBuilder()
     .setTitle('Esusgo REST API')
-    .setDescription('My ESUGO')
+    .setDescription('ESUGO Online Job Listing')
     .setVersion('1.0')
-    .addTag('job available')
+    .addTag('eSugo Online Job listing')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('res-api', app, document);
+  SwaggerModule.setup('esugo-api', app, document);
 
   await app.listen(3000);
 }
