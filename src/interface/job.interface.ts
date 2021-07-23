@@ -1,3 +1,4 @@
+import { IApplication } from "./application.interface";
 import { IUser } from "./user.interface";
 
 export interface IJob {
@@ -5,8 +6,10 @@ export interface IJob {
   title: string;
   description?: string;
   location: string;
-  salary: number;
-  datePosted?: Date;
+  salary: string;
   status: 'pending' | 'approved' | 'disapproved' | 'taken' | 'done' | 'canceled';
+  coverPhoto: string;
+  datePosted?: Date;
   user?: IUser;
+  applications?: IApplication[];
 }

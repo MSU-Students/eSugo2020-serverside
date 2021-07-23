@@ -1,7 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IJob } from 'src/interface/job.interface';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { UserDto } from 'src/esugo-module/user/user.entity';
+import { ApplicationDto } from '../application/application.entity';
 
 @Entity('Job')
 export class JobDto implements IJob {
@@ -22,7 +23,7 @@ export class JobDto implements IJob {
 
   @ApiProperty({ example: 5000 })
   @Column()
-  salary: number;
+  salary: string;
 
   @ApiProperty()
   @Column({ type: 'date' })
@@ -32,15 +33,23 @@ export class JobDto implements IJob {
   @Column({ length: 100 })
   status: 'pending' | 'approved' | 'disapproved' | 'taken' | 'done' | 'canceled';
 
+  @ApiProperty({ example: 'carpentry.jpg' })
+  @Column({ length: 100 })
+  coverPhoto: string;
+
   @ApiProperty({ example: 1 })
   @Column()
-  userId?: number;
-  
+  employerID: number;
+
   @ManyToOne(() => UserDto, (user) => user.jobs, {
     eager: true,
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
+  @JoinColumn({ name: "employerID" })
   user?: UserDto;
+
+  @OneToMany(() => ApplicationDto, (application) => application.job)
+  applications?: ApplicationDto[];
 }

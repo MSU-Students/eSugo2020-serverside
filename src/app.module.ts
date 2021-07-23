@@ -7,6 +7,7 @@ import { UserDto, UserController, UserService, } from './esugo-module/user';
 import { JobDto, JobController, JobService } from "./esugo-module/job"
 import { AuthModule } from 'src/esugo-module/user/auth.module';
 import configuration from './config/configuration';
+import { ApplicationController, ApplicationService } from './esugo-module/application';
 
 @Module({
   imports: [
@@ -29,7 +30,7 @@ import configuration from './config/configuration';
     }),
     AuthModule  
   ],
-  controllers: [AppController, UserController, JobController],
-  providers: [AppService, UserService, JobService],
+  controllers: [AppController, UserController, JobController, ApplicationController],
+  providers: [AppService, UserService, JobService, ApplicationService],
 })
 export class AppModule {}
