@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IJob } from 'src/interface/job.interface';
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { ApplicationDto } from 'src/esugo-module/application/application.entity';
 import { UserDto } from 'src/esugo-module/user/user.entity';
+import { ApplicationDto } from '../application/application.entity';
 
 @Entity('Job')
 export class JobDto implements IJob {
@@ -27,9 +27,9 @@ export class JobDto implements IJob {
 
   @ApiProperty()
   @Column({ type: 'date' })
-  datePosted: Date;
+  datePosted?: Date;
 
-  @ApiProperty({ example: 'pending' })
+  @ApiProperty({ example: 'pending'})
   @Column({ length: 100 })
   status: 'pending' | 'approved' | 'disapproved' | 'taken' | 'done' | 'canceled';
 

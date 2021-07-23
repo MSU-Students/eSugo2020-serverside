@@ -1,8 +1,24 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  UseGuards,
+} from '@nestjs/common';
+import {
+  ApiBearerAuth,
+  ApiBody,
+  ApiOperation,
+  ApiResponse,
+} from '@nestjs/swagger';
+import { JwtAuthGuard } from '../user/jwt-auth.guard';
 import { JobDto } from './job.entity';
 import { JobService } from './job.service';
-
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller('job')
 export class JobController {
   constructor(private jobService: JobService) {}
@@ -12,7 +28,6 @@ export class JobController {
   @ApiResponse({ status: 200, type: JobDto })
   @Post()
   async create(@Body() job: JobDto): Promise<JobDto> {
-    console.log("controller: ", await this.jobService.create(job));
     return this.jobService.create(job);
   }
 
@@ -28,7 +43,6 @@ export class JobController {
   @Get(':id')
   async findOne(@Param('id') id: number): Promise<JobDto> {
     return this.jobService.findOne(id);
-    
   }
 
   @ApiOperation({ summary: 'Update job by id', operationId: 'UpdateJob' })

@@ -4,7 +4,7 @@ export interface IUser {
   firstName: string;
   middleName?: string;
   lastName: string;
-  birthdate: Date;
+  birthdate: string;
   gender: string;
   address?: string;
   contact?: string;
@@ -15,5 +15,6 @@ export interface IUser {
   status: 'available' | 'suspended' | 'banned' | 'pending';
   username: string;
   password: string;
-  jobs: IJob[];
+  refreshToken?: string;
+  jobs?: IJob[]
 }
