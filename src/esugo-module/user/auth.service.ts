@@ -5,6 +5,7 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { IUser } from 'src/interface/user.interface';
+import { UserDto } from './user.entity';
 @Injectable()
 export class AuthService {
   constructor(
@@ -52,7 +53,7 @@ export class AuthService {
     });
   }
 
-  async register(user: IUser): Promise<IUser> {
+  async register(user: UserDto): Promise<UserDto> {
     const { username } = user;
     const foundUser = await this.userService.findByUsername(username);
     if (foundUser) {
