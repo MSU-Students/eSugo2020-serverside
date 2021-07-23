@@ -12,7 +12,6 @@ import { AuthService } from './auth.service';
 import { PassportModule } from '@nestjs/passport';
 import { UserController } from './user.controller';
 import { UserDto } from './user.entity';
-import { Entity } from 'typeorm';
 
 @Module({
   imports: [

@@ -4,7 +4,6 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { IUser } from 'src/interface/user.interface';
-
 @Injectable()
 export class AuthService {
     constructor(

@@ -1,4 +1,3 @@
-
 export default () => ({
     version: process.env.VERSION || '0.0.1',
     port: parseInt(process.env.PORT, 10) || 3030,
@@ -11,4 +10,3 @@ export default () => ({
         expiresIn: process.env.REFRESH_TOKEN_EXPIRY || '600000s' //almost 1 week
     }
   });
-  
