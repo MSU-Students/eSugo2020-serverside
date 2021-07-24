@@ -10,6 +10,7 @@ async function bootstrap() {
     .setDescription('ESUGO Online Job Listing')
     .setVersion('1.0')
     .addTag('eSugo Online Job listing')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('esugo-api', app, document);

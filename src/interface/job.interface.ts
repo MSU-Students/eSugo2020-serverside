@@ -1,11 +1,15 @@
+import { IApplication } from "./application.interface";
+import { IUser } from "./user.interface";
+
 export interface IJob {
-    jobID: number;
-    employerID: number;
-    jobtitle: string;
-    jobdesc: string;
-    location: string;
-    salary: number; 
-    dateposted: string;
-    jobstatus: string;
-    }
-    
+  id?: number;
+  title: string;
+  description?: string;
+  location: string;
+  salary: string;
+  status: 'pending' | 'approved' | 'disapproved' | 'taken' | 'done' | 'canceled';
+  coverPhoto: string;
+  datePosted?: Date;
+  user?: IUser;
+  applications?: IApplication[];
+}
