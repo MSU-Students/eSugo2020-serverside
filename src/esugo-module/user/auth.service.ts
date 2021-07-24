@@ -79,7 +79,7 @@ export class AuthService {
   }
 
   async removeRefreshToken(userId: number) {
-    return this.userService.setCurrentRefreshToken(null, userId);
+    return this.userService.setCurrentRefreshToken('', userId);
   }
 
   pick(O: any, props: string[]): any {
