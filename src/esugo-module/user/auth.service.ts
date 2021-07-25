@@ -39,11 +39,11 @@ export class AuthService {
     };
   }
 
-  getAccessToken(user: any) {
+  getAccessToken(user: UserDto) {
     const payload = {
       username: user.username,
       sub: user.id,
-      role: user.type || 'user',
+      role: user.type,
     };
     return this.jwtService.sign(payload, {
       secret: this.configService.get('jwt').secret,

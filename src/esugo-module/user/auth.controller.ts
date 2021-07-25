@@ -57,7 +57,7 @@ export class AuthController {
   async login(@Request() req) {
     const { refreshToken, accessToken, userId } = await this.authService.login(
       req.user,
- );
+    );
     await this.userService.setCurrentRefreshToken(refreshToken, userId);
     return { refreshToken, accessToken };
   }
@@ -106,6 +106,6 @@ export class AuthController {
       id: undefined,
       password: undefined,
       refreshToken: undefined,
-    }
+    };
   }
 }
