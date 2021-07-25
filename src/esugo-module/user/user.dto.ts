@@ -113,17 +113,6 @@ export class RefreshDto {
     minLength: 5,
   })
   refresh_token: string;
-
-
-
-
-
-
-
-
-
-
-  
 }
 
 export class AccessTokenDto {

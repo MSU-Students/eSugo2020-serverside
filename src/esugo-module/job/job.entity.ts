@@ -50,6 +50,6 @@ export class JobDto implements IJob {
   @JoinColumn({ name: "employerID" })
   user?: UserDto;
 
-  @OneToMany(() => ApplicationDto, (application) => application.job)
+  @OneToMany(() => ApplicationDto, (application) => application.worker)
   applications?: ApplicationDto[];
 }

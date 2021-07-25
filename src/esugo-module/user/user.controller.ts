@@ -34,6 +34,8 @@ export class UserController {
     return this.authService.register(user);
   }
 
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Get all users', operationId: 'GetUsers' })
   @ApiResponse({ status: 200, type: UserDto })
   @Get()
@@ -41,6 +43,8 @@ export class UserController {
     return this.userService.findAll();
   }
 
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Get user by id', operationId: 'GetUser' })
   @ApiResponse({ status: 200, type: UserDto })
   @Get(':id')
@@ -52,6 +56,8 @@ export class UserController {
     };
   }
 
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Update user by id', operationId: 'UpdateUser' })
   @ApiResponse({ status: 200, type: UserDto })
   @Put(':id')
@@ -59,6 +65,8 @@ export class UserController {
     return this.userService.update(id, user);
   }
 
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Delete user by id', operationId: 'DeleteUser' })
   @ApiResponse({ status: 200, type: UserDto })
   @Delete(':id')

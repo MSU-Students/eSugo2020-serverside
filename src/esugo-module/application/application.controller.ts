@@ -1,8 +1,11 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../user/jwt-auth.guard';
 import { ApplicationDto } from './application.entity';
 import { ApplicationService } from './application.service';
 
+@ApiBearerAuth()
+@UseGuards(JwtAuthGuard)
 @Controller('application')
 export class ApplicationController {
   constructor(private applicationService: ApplicationService) {}

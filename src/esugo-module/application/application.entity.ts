@@ -25,16 +25,29 @@ export class ApplicationDto implements IApplication {
 
   @ApiProperty({ example: 1 })
   @Column()
+  employerID: number;
+
+  @ApiProperty({ example: 1 })
+  @Column()
   jobID: number;
 
-  @ManyToOne(() => UserDto, (user) => user.applications, {
+  @ManyToOne(() => UserDto, (worker) => worker.workerApplication, {
     eager: true,
     cascade: true,
     onDelete: 'CASCADE',
     onUpdate: 'CASCADE',
   })
   @JoinColumn({ name: 'workerID' })
-  user?: UserDto;
+  worker?: UserDto;
+
+  @ManyToOne(() => UserDto, (employer) => employer.employerApplication, {
+    eager: true,
+    cascade: true,
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE',
+  })
+  @JoinColumn({ name: 'employerID' })
+  employer?: UserDto;
 
   @ManyToOne(() => JobDto, (job) => job.applications, {
     eager: true,

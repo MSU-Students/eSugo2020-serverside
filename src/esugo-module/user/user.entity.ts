@@ -72,7 +72,10 @@ export class UserDto implements IUser {
   @OneToMany(() => JobDto, (job) => job.user)
   jobs: JobDto[];
 
-  @OneToMany(() => ApplicationDto, (application) => application.user)
-  applications: ApplicationDto[];
+  @OneToMany(() => ApplicationDto, (workerApplication) => workerApplication.worker)
+  workerApplication: ApplicationDto[];
+
+  @OneToMany(() => ApplicationDto, (employerApplication) => employerApplication.employer)
+  employerApplication: ApplicationDto[];
 }
 

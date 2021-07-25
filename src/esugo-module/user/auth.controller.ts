@@ -58,7 +58,7 @@ export class AuthController {
     const { refreshToken, accessToken, userId } = await this.authService.login(
       req.user,
     );
-    await this.userService.setCurrentRefreshToken(refreshToken, userId);
+    const res = await this.userService.setCurrentRefreshToken(refreshToken, userId);
     return { refreshToken, accessToken };
   }
 
@@ -103,7 +103,6 @@ export class AuthController {
     const user = await this.userService.findOne(req.user.userId);
     return {
       ...user,
-      id: undefined,
       password: undefined,
       refreshToken: undefined,
     };

@@ -1,6 +1,6 @@
 export default () => ({
     version: process.env.VERSION || '0.0.1',
-    port: parseInt(process.env.PORT, 10) || 3030,
+    port: parseInt(process.env.PORT, 10) || 3000,
     jwt: {
         secret: process.env.JWT_SECRET || 'secret',
         expiresIn: process.env.JWT_EXPIRY || '900s' //15 mins

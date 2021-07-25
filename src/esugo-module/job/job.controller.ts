@@ -18,11 +18,13 @@ import { JwtAuthGuard } from '../user/jwt-auth.guard';
 import { JobDto } from './job.entity';
 import { JobService } from './job.service';
 
+
 @Controller('job')
 export class JobController {
   constructor(private jobService: JobService) {}
 
-  
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @ApiBody({ type: JobDto })
   @ApiOperation({ summary: 'Add new job', operationId: 'AddJob' })
   @ApiResponse({ status: 200, type: JobDto })
@@ -46,7 +48,8 @@ export class JobController {
     return this.jobService.findOne(id);
   }
 
-  
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Update job by id', operationId: 'UpdateJob' })
   @ApiResponse({ status: 200, type: JobDto })
   @Put(':id')
@@ -54,7 +57,8 @@ export class JobController {
     return this.jobService.update(id, job);
   }
 
-  
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Delete job by id', operationId: 'DeleteJob' })
   @ApiResponse({ status: 200, type: JobDto })
   @Delete(':id')
