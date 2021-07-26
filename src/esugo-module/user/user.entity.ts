@@ -21,7 +21,7 @@ export class UserDto implements IUser {
   @Column({ length: 100 })
   lastName: string;
 
-  @ApiProperty({ example: '2021-08-11' })
+  @ApiProperty({ example: '2021/08/11' })
   @Column({ length: 100, nullable: true })
   birthdate: string;
 
@@ -49,7 +49,7 @@ export class UserDto implements IUser {
   @Column({ length: 100 })
   location?: string;
 
-  @ApiProperty({ example: 'employer' })
+  @ApiProperty({ example: 'admin' })
   @Column({ length: 100 })
   type: 'worker' | 'employer' | 'moderator' | 'admin';
 
