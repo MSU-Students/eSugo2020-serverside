@@ -4,5 +4,5 @@ export interface IApplication {
   jobID: number;
   workerID: number;
   employerID: number;
-  status: string;
+  status: string; 
 }
